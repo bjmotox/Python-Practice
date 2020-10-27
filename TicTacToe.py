@@ -1,6 +1,3 @@
-#In Progress
-
-
 def who_are_you():
     player1=''
     player2=''
@@ -42,36 +39,38 @@ def display_board(board):
 
 def place_choice(game_board, player):
     new_board = game_board
-    choice = 'wrong'
+    choice = '22'
     players_turn = player
+    
     
     while choice not in (1,2,3,4,5,6,7,8,9):
         choice = int(input("Pick a position\n7 8 9\n4 5 6\n1 2 3:"))
         if choice not in [1,2,3,4,5,6,7,8,9]:
             print("sorry, invalid choice")
-            
     if players_turn == 'X':
         new_board[choice] = 'X'
     else:
         new_board[choice] = 'O'
-        
+    
     return new_board
 
 
-#will return "winner!" if a winner exists 
-# will return False if game continues
-# will return game over: tie if board is filled and no winner
+# this needs to be rebuilt
 def game_over(game_board):
-    game_complete = False
+    function_complete = False
     tie_test = ' '
+    game_over = ''
     
-    while game_complete == False:
+    while function_complete == False:
         if game_board[7] == game_board[8] == game_board[9] or game_board[4] == game_board[5] == game_board[6] or game_board[1] == game_board[2] == game_board[3] or game_board[1] == game_board[5] == game_board[9] or game_board[7] == game_board[5] == game_board[3] or game_board[1] == game_board[4] == game_board[7] or game_board[3] == game_board[6] == game_board[9] or game_board[2] == game_board[5] == game_board[8]:
-            return 'Winner!'
+            function_complete = True
+            game_over = True
         if any(elem in tie_test for elem in game_board):
-                return False
+            function_complete = True
+            game_over = False
         else: 
-            return 'Game Over: Tie!'
-    #will also check if board is full and game is a tie
+            pass
+            
+    return game_over
 
 
